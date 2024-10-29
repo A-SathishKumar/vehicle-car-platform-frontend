@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import logo from '../../assets/logo.png';
+import service1 from '../../assets/service-1.jpg'
+import service2 from '../../assets/service-2.jpg'
+import service3 from '../../assets/service-3.jpg'
+import service4 from '../../assets/service-4.jpg'
 import Navbar from '../../Components/Navbar/Navbar';
 import { useLocation } from 'react-router-dom';
 
@@ -65,7 +69,7 @@ function HomePage() {
                     </p>
                     <div className="service__grid">
                         <div className="service__card">
-                            <img src="https://gomaestro.in/wp-content/uploads/2024/05/2807.jpg" alt="service" />
+                            <img src={service1} alt="service" />
                             <h4>Aligned Wheel</h4>
                             <p>
                                 Experience smoother rides and extended tire life with our wheel
@@ -73,7 +77,7 @@ function HomePage() {
                             </p>
                         </div>
                         <div className="service__card">
-                            <img src="https://www.hybridautomotives.com.au/wp-content/uploads/2024/03/Untitled-design-15-1024x538.png" alt="service" />
+                            <img src={service2} alt="service" />
                             <h4>Electrical system</h4>
                             <p>
                                 Elevate car's electrical system to peak performance with our
@@ -81,7 +85,7 @@ function HomePage() {
                             </p>
                         </div>
                         <div className="service__card">
-                            <img src="https://www.mibolsillo.com/__export/1698593453703/sites/debate/img/2023/10/29/limpiar-auto-1.jpg_554688468.jpg" alt="service" />
+                            <img src={service3} alt="service" />
                             <h4>System Service</h4>
                             <p>
                                 We utilize cutting-edge diagnostics and techniques to ensure
@@ -89,7 +93,7 @@ function HomePage() {
                             </p>
                         </div>
                         <div className="service__card">
-                            <img src="https://tlccollision.info/public/assets/project_img/home_postx_2.webp" alt="service" />
+                            <img src={service4} alt="service" />
                             <h4>Engine Diagnostics</h4>
                             <p>
                                 Unlock the secrets of your car's performance with state-of-the-art
