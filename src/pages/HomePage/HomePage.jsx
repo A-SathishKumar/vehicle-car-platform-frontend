@@ -34,7 +34,7 @@ function HomePage() {
                     <h4>Caring For Your Car The Way You Would.</h4>
                 </div>
                 <div className="banner__image">
-                    <img src="https://github.com/A-SathishKumar/vehicle-car-platform-frontend/blob/main/src/assets/banner.jpg" alt="banner" />
+                    <img src="https://drive.google.com/file/d/1eWDe7ZYPo8aoyxNteELRSxUqIRdGgvVb/view?usp=sharing" alt="banner" />
                 </div>
             </section>
 
