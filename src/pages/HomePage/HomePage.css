@@ -86,7 +86,7 @@ body {
 .header {
   padding-block: 5rem;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("src/assets/header.jpg");
+    url("https://am-s3-bucket-assets.s3.eu-west-2.amazonaws.com/silverstone/prod/lot_images/large/rec11168-1/rec11168-1_3.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
