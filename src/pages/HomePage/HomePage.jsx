@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
-
+import logo from '../../assets/logo.png';
 import Navbar from '../../Components/Navbar/Navbar';
 import { useLocation } from 'react-router-dom';
 
@@ -216,7 +216,7 @@ function HomePage() {
                 <div className="section__container footer__container">
                     <div className="footer__col">
                         <div className="logo footer__logo">
-                            <a href="#"><img src="src/assets/logo.png" alt="logo" /></a>
+                            <a href="#"><img src={logo} alt="logo" /></a>
                         </div>
                         <p className="section__description">
                             With a rich legacy spanning 25 years, our commitment to excellence
