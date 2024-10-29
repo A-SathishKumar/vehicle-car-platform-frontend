@@ -7,6 +7,18 @@ import { TbBrandBooking } from "react-icons/tb";
 import { BiMailSend } from "react-icons/bi";
 import Navbar from '../../Components/Navbar/Navbar'
 import { FetchUsersAPI, FetchBookingsAPI, EditStatusAPI, SendNotificationAPI } from '../../apis';
+import Swal from 'sweetalert2'
+
+const fireAlert = (text,icontext) => {
+    Swal.fire({
+        title: text,
+        showConfirmButton: true,
+        confirmButtonText: "OK",
+        icon: icontext
+    }
+    )
+}
+
 
 function Admin() {
   const [activeTab, setActiveTab] = useState('profile');
@@ -87,7 +99,8 @@ function Admin() {
     const id = { bookingId };
     const response = await EditStatusAPI(id);
     const data = await response.msg;
-    alert(data);
+    fireAlert(data,'success');
+    // alert(data);
     fetchBookings(); // Refresh the bookings list
   };
 
@@ -134,11 +147,13 @@ function Admin() {
 
     const data = await response;
     if (response.ok) {
-      alert('Notification sent successfully!');
+      fireAlert('Notification sent successfully!','success');
+      // alert('Notification sent successfully!');
       setSubject('');
       setContent('');
     } else {
-      alert('Error sending notification: ' + data.message);
+      fireAlert('Something Went Wrong, Please Try again Later','error');
+      // alert('Error sending notification: ' + data.message);
     }
   };
 

@@ -12,11 +12,14 @@ import AccessDenied from './pages/NoAccess/accessdeniced';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancel from './pages/PaymentCancel';
 
+import HomePage from './pages/HomePage/HomePage';
+
 import '../src/pages/AdminPage/Admin.css';
 import '../src/pages/ForgetPass/Forgetpass.css';
 import '../src/pages/NoAccess/AccessDenied.css';
 import '../src/pages/Service/Service.css';
-import '/src/App.css';
+//import '/src/App.css';
+import '/src/pages/HomePage/HomePage.css'
   
 const PrivateRoute = ({ Component }) => {
   const isAuthenticated = Boolean(localStorage.getItem('user'));
@@ -42,7 +45,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/profile' element={<PrivateRoute Component={<UserPage />} />} />
-        <Route path="/" element={<HomeScreen />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verify-account" element={<AccountActivation />} />

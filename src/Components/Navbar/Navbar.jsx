@@ -23,9 +23,9 @@ const Navbar = () => {
         {location.pathname === "/" && (
           <div className="vcp__navbar-links_container">
             <p><a href="#home">Home</a></p>
-            <p><a href="#detail">What is VCP?</a></p>
-            <p><a href="#why">Why VCP?</a></p>
-            <p><a href="#faq">Car Service</a></p>
+            <p><a href="#about">About</a></p>
+            <p><a href="#service">Service</a></p>
+            <p><a href="#client">Client</a></p>
           </div>
         )}
       </div>
@@ -47,14 +47,17 @@ const Navbar = () => {
           <div className="vcp__navbar-menu_container scale-up-center">
             <div className="vcp__navbar-menu_container-links">
               <p><a href="#home">Home</a></p>
-              <p><a href="#wvcp">What is vcp?</a></p>
-              <p><a href="#possibility">Open AI</a></p>
-              <p><a href="#features">Case Studies</a></p>
-              <p><a href="#blog">Library</a></p>
-            </div>
-            <div className="vcp__navbar-menu_container-links-sign">
-              <p>Sign in</p>
-              <button type="button">Sign up</button>
+              <p><a href="#about">About</a></p>
+              <p><a href="#service">Service</a></p>
+              <p><a href="#client">Client</a></p>
+              {isAdmin && (<a href='/admin'>
+                <button type="button">Admin Panel</button>
+              </a>)}
+              {isAuthenticated ? (<a href='/profile'>
+                <button type="button">Profile</button>
+              </a>) : (<a href='/register'>
+                <button type="button">Sign Up</button>
+              </a>)}
             </div>
           </div>
         )}

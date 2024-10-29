@@ -1,8 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, Link, Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
-import { SendOTPAPI,VerifyOTPAPI,ResetPasswordAPI } from '../../apis';
-// import './ForgetPass.css';
+import { SendOTPAPI,VerifyOTPAPI,ResetPasswordAPI } from '../../apis'
+import Swal from 'sweetalert2'
+
+const fireAlert = (text,icontext) => {
+    Swal.fire({
+        title: text,
+        showConfirmButton: true,
+        confirmButtonText: "OK",
+        icon: icontext
+    }
+    )
+}
+
 
 function ForgotPassword() {
   const [step, setStep] = useState(1); 
@@ -13,9 +24,15 @@ function ForgotPassword() {
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
+
+  const validatePassword = (password) => {
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return re.test(password);
+};
+
+
   const SendOTP = async ()=>{
     const response = await SendOTPAPI({email});
-    console.log(response)
     return response;
   };
   const VerifyOTP = async ()=>{
@@ -24,7 +41,6 @@ function ForgotPassword() {
       otp:otp
     }
     const response = await VerifyOTPAPI(data);
-    console.log(response);
     return response;
   }
 
@@ -34,7 +50,6 @@ function ForgotPassword() {
       password:password
     };
     const response = await ResetPasswordAPI(data);
-    console.log(response);
     return response;
   }
   const handleEmailSubmit = async (e) => {
@@ -43,12 +58,13 @@ function ForgotPassword() {
     try{
       const response =   await SendOTP();
       if(response.success){
-        alert(response.msg);
+        fireAlert(response.msg,'success');
         setStep(2);
       }else{
-        alert(response);
+        fireAlert(response,'warning');
       } 
     }catch(e){
+      fireAlert('Somthing Went Wrong','error');
       alert(e);
     }
   };
@@ -57,30 +73,35 @@ function ForgotPassword() {
     try{
       const response = await VerifyOTP();
       if(response.success){
-        alert("OTP Verfied Successfully");
+        fireAlert("OTP Verfied Successfully",'success');
         setStep(3);
       }else{
-        alert(response);
+        fireAlert(response,'warning');
       }
     }catch(e){
-      console.log(e.message);
+      fireAlert('Somthing Went Wrong','error');
     }
   };
 
   // Step 3: Handle password reset
-  const handlePasswordReset = async(e) => {
+  const handlePasswordReset = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      const response = await ResetPassword();
-      if(response.success){
-        setStep(4);
-      }else{
-        alert("Somthing Went Wrong, Please Try again Later");
-      }
-    } else {
-      setErrorMessage('Passwords do not match.');
+    if (!validatePassword(password)) {
+        setErrorMessage('Password must be at least 8 characters, with one uppercase, one lowercase letter, one number, and may include special characters.');
+        return;
     }
-  };
+
+    if (password === confirmPassword) {
+        const response = await ResetPassword();
+        if (response.success) {
+            setStep(4);
+        } else {
+            fireAlert("Something went wrong, please try again later", 'warning');
+        }
+    } else {
+        setErrorMessage('Passwords do not match.');
+    }
+};
 
   return (
     <>

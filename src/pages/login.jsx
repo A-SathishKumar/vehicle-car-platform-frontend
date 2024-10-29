@@ -3,6 +3,19 @@ import { useNavigate, Link, Navigate } from 'react-router-dom';
 import Navbar from '../Components/Navbar/Navbar';
 import { loginAPI } from '../apis';
 
+import Swal from 'sweetalert2'
+
+const fireAlert = (text,icontext) => {
+    Swal.fire({
+        title: text,
+        showConfirmButton: true,
+        confirmButtonText: "OK",
+        icon: icontext
+    }
+    )
+}
+
+
 const Login = () => {
     const isAuthenticated = Boolean(localStorage.getItem('user'));
     const [email, setEmail] = useState('');
@@ -13,7 +26,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await loginAPI({ email, password });
-            alert(response.msg);
+            fireAlert(response.msg,'success');
             localStorage.setItem('user', JSON.stringify(response.user));
             
             if(response.role === 'admin'){
@@ -25,10 +38,8 @@ const Login = () => {
                 navigate('/profile');
             }
         } catch (e) {
-            console.log(e);
-            alert(e.message);
+            fireAlert(e.message,'error');
         }
-        // Add authentication logic here
 
     };
     if (isAuthenticated) {

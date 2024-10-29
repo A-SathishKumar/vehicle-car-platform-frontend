@@ -27,6 +27,10 @@
     flex-direction: row;
 }
 
+.vcp__navbar-links_container a{
+    color: white;
+}
+
 .vcp__navbar-sign {
     display: flex;
     justify-content: flex-end;

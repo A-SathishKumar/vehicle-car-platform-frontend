@@ -126,19 +126,24 @@ export const AddCarAPI = async(carDetails)=>{
 
 //Fetch Car
 export const FetchCarAPI = async(carDetails)=>{
-    const responce = await fetch(`${BE_URL}/users/profile/fetchcars`,{
-        body:JSON.stringify(carDetails),
-        method:"POST",
-        headers: {
-            "Content-Type": "application/json;charset=utf-8",
-        },
-    });
-    if(responce.status === 500){
-        return("Something Went Wrong");
-    }else if(responce.status === 400){
-        return("Invalid");
+    try{
+        const responce = await fetch(`${BE_URL}/users/profile/fetchcars`,{
+            body:JSON.stringify(carDetails),
+            method:"POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+            },
+        });
+        if(responce.status === 500){
+            return("Something Went Wrong");
+        }else if(responce.status === 400){
+            return("Invalid");
+        }
+        return await responce.json();
+    }catch{
+        return "Somthing Went wrong";
     }
-    return await responce.json();
+    
 }
 
 //Delete Car From Profile

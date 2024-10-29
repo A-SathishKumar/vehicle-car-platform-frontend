@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import { AddBookingAPI } from '../apis';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
+const fireAlert = (text,icontext) => {
+    Swal.fire({
+        title: text,
+        showConfirmButton: true,
+        confirmButtonText: "OK",
+        icon: icontext
+    }
+    )
+}
 
 const PaymentSuccess = () => {
 
@@ -39,7 +49,7 @@ const PaymentSuccess = () => {
     if (data.success) {
       
       SetpaymentSuccess(true);
-      alert(data.msg);
+      fireAlert(data.msg,'success')
       localStorage.removeItem('service');
       
     } else {

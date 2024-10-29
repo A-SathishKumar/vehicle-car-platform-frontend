@@ -1,10 +1,19 @@
-import './Service.css'; // Include your styles here
 import React, { useEffect, useState } from 'react';
 import { useNavigate} from 'react-router-dom';
-import { FaUser, FaHistory, FaCar } from 'react-icons/fa'; // Icons for tabs
+import { FaUser, FaHistory, FaCar } from 'react-icons/fa';
 import { IoIosAddCircle } from "react-icons/io";
 import { FetchServiceAPI, FetchBookingAPI, AddCarAPI, FetchCarAPI, DeleteCarAPI, ActivationSentAPI, StripePaymentAPI } from '../../apis.js';
+import Swal from 'sweetalert2'
 
+const fireAlert = (text,icontext) => {
+    Swal.fire({
+        title: text,
+        showConfirmButton: true,
+        confirmButtonText: "OK",
+        icon: icontext
+    }
+    )
+}
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('profile');
@@ -38,7 +47,7 @@ const ProfilePage = () => {
     const userData = JSON.parse(localStorage.getItem('user'));
     const email = { email: userData.email, name: userData.name };
     const response = await ActivationSentAPI(email);
-    alert(response.msg);
+    fireAlert(response.msg,'success');
   }
   const navigate = useNavigate();
 
@@ -66,7 +75,7 @@ const ProfilePage = () => {
     try {
       FetchService();
     } catch (e) {
-      console.log(e);
+      fireAlert("Somthing Went Wrong",'error');
     }
   }, []);
 
@@ -96,13 +105,14 @@ const ProfilePage = () => {
   };
 
   const handleBookService = (service) => {
-    alert("Kindly Fill the Below Form to Confirm Your Booking")
+    fireAlert("Kindly Fill the Below Form to Confirm Your Booking",'info');
     setSelectedService(service);
   };
 
   const handlelogout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
+    fireAlert('Logout Successfully...','success');
     navigate('/login');
   }
   if (!user) {
@@ -112,9 +122,16 @@ const ProfilePage = () => {
   const Fetchcars = async () => {
     const userData = JSON.parse(localStorage.getItem('user'));
     const email = userData.email;
-    const response = await FetchCarAPI({ email });
-    setCars(response);
-    return null;
+    try{
+      const response = await FetchCarAPI({ email });
+      if(response){
+        setCars(response);
+      }
+      return null;
+    }catch(e){
+      fireAlert("Somthing Went Wrong",'error');
+    }
+    
   }
 
   if (activeTab === "addcar") {
@@ -133,11 +150,11 @@ const ProfilePage = () => {
       const email = userData.email;
       const response = await AddCarAPI({ ...newCar, email })
       if (response.success) {
-        alert(response.msg)
         setCars([...cars, { id: cars.length + 1, ...newCar }]);
         setNewCar({ make: '', model: '', year: '' });
+        fireAlert(response.msg,'success');
       } else {
-        alert(response.msg);
+        fireAlert(response.msg,'error');
       }
 
     }
@@ -146,7 +163,7 @@ const ProfilePage = () => {
     const userData = JSON.parse(localStorage.getItem('user'));
     const email = userData.email;
     const response = await DeleteCarAPI({ ...cars, email });
-    alert(response.msg);
+    fireAlert(response.msg,'success');
   };
 
   //Payment Intergaration

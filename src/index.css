@@ -11,3 +11,14 @@
   --color-text: #81AFDD;
   --color-subtext: #FF8A71;
 }
+
+:root {
+  --primary-color: #da042a;
+  --primary-color-dark: #c00427;
+  --secondary-color: #15151f;
+  --secondary-color-dark: #0a0b0f;
+  --text-light: #6b7280;
+  --extra-light: #f8f7fd;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
