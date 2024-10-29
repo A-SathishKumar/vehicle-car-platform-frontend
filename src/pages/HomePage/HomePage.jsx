@@ -40,7 +40,7 @@ function HomePage() {
 
             <section className="section__container experience__container" id="about">
                 <div className="experience__image">
-                    <img src="src\assets\experience.jpg" alt="experience" />
+                    <img src="https://gomaestro.in/wp-content/uploads/2024/05/2807.jpg" alt="experience" />
                 </div>
                 <div className="experience__content">
                     <p className="section__subheader">WHO WE ARE</p>
@@ -65,7 +65,7 @@ function HomePage() {
                     </p>
                     <div className="service__grid">
                         <div className="service__card">
-                            <img src="src\assets\service-1.jpg" alt="service" />
+                            <img src="https://gomaestro.in/wp-content/uploads/2024/05/2807.jpg" alt="service" />
                             <h4>Aligned Wheel</h4>
                             <p>
                                 Experience smoother rides and extended tire life with our wheel
@@ -73,7 +73,7 @@ function HomePage() {
                             </p>
                         </div>
                         <div className="service__card">
-                            <img src="src\assets\service-2.jpg" alt="service" />
+                            <img src="https://www.hybridautomotives.com.au/wp-content/uploads/2024/03/Untitled-design-15-1024x538.png" alt="service" />
                             <h4>Electrical system</h4>
                             <p>
                                 Elevate car's electrical system to peak performance with our
@@ -81,7 +81,7 @@ function HomePage() {
                             </p>
                         </div>
                         <div className="service__card">
-                            <img src="src\assets\service-3.jpg" alt="service" />
+                            <img src="https://www.mibolsillo.com/__export/1698593453703/sites/debate/img/2023/10/29/limpiar-auto-1.jpg_554688468.jpg" alt="service" />
                             <h4>System Service</h4>
                             <p>
                                 We utilize cutting-edge diagnostics and techniques to ensure
@@ -89,7 +89,7 @@ function HomePage() {
                             </p>
                         </div>
                         <div className="service__card">
-                            <img src="src\assets\service-4.jpg" alt="service" />
+                            <img src="https://tlccollision.info/public/assets/project_img/home_postx_2.webp" alt="service" />
                             <h4>Engine Diagnostics</h4>
                             <p>
                                 Unlock the secrets of your car's performance with state-of-the-art
@@ -142,7 +142,7 @@ function HomePage() {
                 >
                     <SwiperSlide>
                         <div className="testimonial__card">
-                            <img src="src/assets/testimonial-3.jpg" alt="testimonial" />
+                            <img src="https://miro.medium.com/v2/resize:fit:600/format:webp/0*rd4scwMI6gK6VJVP.jpg" alt="testimonial" />
                             <p>
                                 I couldn't believe my eyes when I got my car back from the
                                 service. It looked and drove like it had just rolled off the
@@ -154,7 +154,7 @@ function HomePage() {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="testimonial__card">
-                            <img src="src/assets/testimonial-1.jpg" alt="testimonial" />
+                            <img src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg" alt="testimonial" />
                             <p>
                                 I've been bringing my car here for years, and they never
                                 disappoint. Their attention to detail and commitment to quality
@@ -166,7 +166,7 @@ function HomePage() {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="testimonial__card">
-                            <img src="src/assets/testimonial-2.jpg" alt="testimonial" />
+                            <img src="https://images.ctfassets.net/vztl6s0hp3ro/4nq58wgJiVZ46Q8aTKNwaD/b42784c0664f0322c08a108cd2a4ee69/7_types_of_employee_testimonials_to_attract_the_best_candidates.webp" alt="testimonial" />
                             <p>
                                 As a car enthusiast, I'm extremely particular about who touches
                                 my prized possession. Their team's expertise and passion for
